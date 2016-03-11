@@ -8,7 +8,7 @@ CI_IVY_CACHE ?= $(HOME)/.ivy2
 CI_SBT_CACHE ?= $(HOME)/.sbt
 CI_WORKDIR ?= $(shell pwd)
 
-RELEASE_VERSION ?= $(CI_BUILD_NUMBER)
+VERSION ?= $(CI_BUILD_NUMBER)
 
 BUILDER_TAG = $(builderImage):$(builderVersion)
 
@@ -39,7 +39,7 @@ package:
 		-v $(CI_WORKDIR):/data \
 		-v $(CI_IVY_CACHE):/root/.ivy2 \
 		-v $(CI_SBT_CACHE):/root/.sbt \
-		-e RELEASE_VERSION=$(RELEASE_VERSION) \
+		-e VERSION=$(VERSION) \
 		-v /var/run/docker.sock:/var/run/docker.sock \
 		$(BUILDER_TAG)
 
@@ -51,7 +51,7 @@ release:
 	# then tag in repo.
 
 version:
-	@echo $(RELEASE_VERSION)
+	@echo $(VERSION)
 
 deploy:
 	# this should publish concrete version to nexus.
