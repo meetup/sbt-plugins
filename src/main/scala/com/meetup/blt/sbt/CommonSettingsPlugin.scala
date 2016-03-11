@@ -12,7 +12,6 @@ object CommonSettingsPlugin extends AutoPlugin {
     // it in multiple places.
     scalaVersion in Global := "2.11.7",
     version := "make -s version".!!.trim,
-    incOptions := incOptions.value.withNameHashing(true),
     updateOptions := updateOptions.value.withCachedResolution(true),
     scalacOptions in Global := Seq(
       "-feature",
