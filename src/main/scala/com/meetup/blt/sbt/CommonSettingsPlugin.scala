@@ -1,5 +1,6 @@
 package com.meetup.blt.sbt
 
+import sbt.Opts.compile
 import sbt.Keys._
 import sbt._
 
@@ -14,12 +15,12 @@ object CommonSettingsPlugin extends AutoPlugin {
     incOptions := incOptions.value.withNameHashing(true),
     updateOptions := updateOptions.value.withCachedResolution(true),
     scalacOptions in Global := Seq(
-      "-encoding", "UTF8",
       "-feature",
-      "-unchecked",
-      "-deprecation",
+      compile.unchecked,
+      compile.deprecation,
       // Needed for AUFS file systems.
-      "-Xmax-classfile-name", "242"),
+      "-Xmax-classfile-name", "242") ++
+      compile.encoding("UTF8"),
     javacOptions in Global := Seq(
       "-g",
       "-source", "1.8",
