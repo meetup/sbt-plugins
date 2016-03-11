@@ -1,3 +1,4 @@
+import sbt.Opts.compile
 
 version := "make -s version".!!.trim
 
@@ -6,11 +7,12 @@ scalaVersion := "2.10.6"
 sbtPlugin := true
 
 scalacOptions := Seq(
-  "-encoding", "utf8",
   "-feature",
-  "-unchecked",
-  "-deprecation",
-  "-Xmax-classfile-name", "242")
+  compile.unchecked,
+  compile.deprecation,
+  // Needed for AUFS file systems.
+  "-Xmax-classfile-name", "242") ++
+  compile.encoding("UTF8")
 
 name := "sbt-plugins"
 
