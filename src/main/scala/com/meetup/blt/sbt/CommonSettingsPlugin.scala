@@ -8,9 +8,9 @@ object CommonSettingsPlugin extends AutoPlugin {
 
   override def projectSettings: Seq[Setting[_]] = Seq(
     organization in Global := "com.meetup",
+    scalaVersion in Global := "2.11.7",
     // Grab version from Make build.properties so we're not managing
     // it in multiple places.
-    scalaVersion in Global := "2.11.7",
     version := "make -s version".!!.trim,
     updateOptions := updateOptions.value.withCachedResolution(true),
     scalacOptions in Global := Seq(
