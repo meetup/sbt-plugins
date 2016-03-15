@@ -50,7 +50,7 @@ publish:
 		-v $(CI_IVY_CACHE):/root/.ivy2 \
 		-v $(CI_SBT_CACHE):/root/.sbt \
 		-e VERSION=$(VERSION) \
-		$(BUILDER_TAG)
+		$(BUILDER_TAG) \
 		publish-local
 
 publish-local:
