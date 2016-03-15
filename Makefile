@@ -40,18 +40,21 @@ package:
 		-v $(CI_IVY_CACHE):/root/.ivy2 \
 		-v $(CI_SBT_CACHE):/root/.sbt \
 		-e VERSION=$(VERSION) \
-		-v /var/run/docker.sock:/var/run/docker.sock \
 		$(BUILDER_TAG)
 
 publish:
-	# This should publish the snapshot to nexus.
+	docker pull $(BUILDER_TAG)
+	docker run \
+		--rm \
+		-v $(CI_WORKDIR):/data \
+		-v $(CI_IVY_CACHE):/root/.ivy2 \
+		-v $(CI_SBT_CACHE):/root/.sbt \
+		-e VERSION=$(VERSION) \
+		$(BUILDER_TAG)
+		publish-local
 
-release:
-	# This should set concrete version of jar
-	# then tag in repo.
+publish-local:
+	sbt publish
 
 version:
 	@echo $(VERSION)
-
-deploy:
-	# this should publish concrete version to nexus.
