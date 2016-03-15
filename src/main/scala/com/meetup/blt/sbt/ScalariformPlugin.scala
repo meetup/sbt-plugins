@@ -1,9 +1,10 @@
 package com.meetup.blt.sbt
 
 import com.typesafe.sbt.SbtScalariform
-import sbt._
-
+import com.typesafe.sbt.SbtScalariform.autoImport._
 import scalariform.formatter.preferences._
+import sbt._
+import sbt.Keys._
 
 
 object ScalariformPlugin extends AutoPlugin {
@@ -31,6 +32,11 @@ object ScalariformPlugin extends AutoPlugin {
         .setPreference(SpaceBeforeColon, false)
         .setPreference(SpaceInsideBrackets, false)
         .setPreference(SpaceInsideParentheses, false)
-        .setPreference(SpacesWithinPatternBinders, true))
+        .setPreference(SpacesWithinPatternBinders, true),
+      // Scalariform likes to format generated sources sometimes....
+      // bad scalariform, bad.
+      excludeFilter in scalariformFormat <<= excludeFilter(_ || {
+        new SimpleFileFilter(_.getCanonicalPath.contains("/target/"))
+      }))
 
 }
