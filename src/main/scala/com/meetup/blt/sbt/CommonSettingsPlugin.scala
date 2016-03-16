@@ -24,7 +24,13 @@ object CommonSettingsPlugin extends AutoPlugin {
       "-g",
       "-source", "1.8",
       "-target", "1.8",
-      "-encoding", "UTF-8" )
+      "-encoding", "UTF-8" ),
+
+    // Some basic libraries to get people started.
+    libraryDependencies ++= Seq(
+      "org.scalatest" %% "scalatest" % "2.2.6" % "test",
+      "org.scalacheck" %% "scalacheck" % "1.11.5" % "test"
+    )
   )
 
 }
