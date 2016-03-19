@@ -5,6 +5,7 @@ import sbt.Keys._
 import sbt._
 
 object CommonSettingsPlugin extends AutoPlugin {
+  val Nexus = "https://nexus.blt.meetup.com"
 
   override def projectSettings: Seq[Setting[_]] = Seq(
     organization in Global := "com.meetup",
@@ -25,6 +26,11 @@ object CommonSettingsPlugin extends AutoPlugin {
       "-source", "1.8",
       "-target", "1.8",
       "-encoding", "UTF-8" ),
+
+    resolvers ++= Seq(
+      "Nexus-Snapshots" at s"$Nexus/content/repositories/snapshots",
+      "Nexus" at s"$Nexus/content/repositories/releases"
+    ),
 
     // Some basic libraries to get people started.
     libraryDependencies ++= Seq(

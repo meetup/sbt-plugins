@@ -22,6 +22,11 @@ addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.6.0")
 
 addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.0.6")
 
+resolvers ++= Seq(
+  "Nexus-Snapshots" at "https://nexus.blt.meetup.com/content/repositories/snapshots",
+  "Nexus" at "https://nexus.blt.meetup.com/content/repositories/snapshots"
+)
+
 publishMavenStyle := true
 
 publishTo <<= version { (v: String) =>
