@@ -29,7 +29,7 @@ clean:
 	@sbt clean
 	rm -rf $(TARGET_DIR)
 
-package-local:
+package-sbt:
 	sbt publishLocal
 
 package:
@@ -51,9 +51,9 @@ publish:
 		-v $(CI_SBT_CACHE):/root/.sbt \
 		-e VERSION=$(VERSION) \
 		$(BUILDER_TAG) \
-		publish-local
+		publish-sbt
 
-publish-local:
+publish-sbt:
 	sbt publish
 
 version:
