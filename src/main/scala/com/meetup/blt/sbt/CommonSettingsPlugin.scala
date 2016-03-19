@@ -25,7 +25,7 @@ object CommonSettingsPlugin extends AutoPlugin {
       "-g",
       "-source", "1.8",
       "-target", "1.8",
-      "-encoding", "UTF-8" ),
+      "-encoding", "UTF-8"),
 
     resolvers ++= Seq(
       "Nexus-Snapshots" at s"$Nexus/content/repositories/snapshots",

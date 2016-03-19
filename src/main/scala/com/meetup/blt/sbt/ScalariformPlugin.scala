@@ -6,7 +6,6 @@ import scalariform.formatter.preferences._
 import sbt._
 import sbt.Keys._
 
-
 object ScalariformPlugin extends AutoPlugin {
 
   override def projectSettings: Seq[Setting[_]] =
