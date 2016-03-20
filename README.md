@@ -15,10 +15,12 @@ To use you just add the plugin like any other.
 
 ## Usage
 
-Add the sbt plugin first in your `project/plugins.sbt`.
+Add the sbt plugin and a resolver for our internal nexus to your `project/plugins.sbt` file.  You can find the latest version in the releases: [https://github.com/meetup/sbt-plugins/releases](https://github.com/meetup/sbt-plugins/releases)
 
 ```scala
-addSbtPlugin("com.meetup" % "sbt-plugins" % "jose-snapshot")
+resolvers += "Nexus" at "https://nexus.blt.meetup.com/content/repositories/releases"
+
+addSbtPlugin("com.meetup" % "sbt-plugins" % "{latest-version}")
 ```
 
 Then you can just add the settings you'd like in your `build.sbt`.
