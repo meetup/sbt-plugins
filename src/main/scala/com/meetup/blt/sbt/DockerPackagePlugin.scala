@@ -9,7 +9,7 @@ import sbt.Keys._
 /**
  * Some general build settings to do docker easily.
  */
-object DockerPlugin extends AutoPlugin {
+object DockerPackagePlugin extends AutoPlugin {
   override def requires: Plugins = SbtDockerPlugin && JavaAppPackaging
 
   publishLocal in Docker <<= (publishLocal in Docker).dependsOn(test in Test)

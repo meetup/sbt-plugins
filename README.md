@@ -34,7 +34,7 @@ enablePlugins(ScalariformPlugin)
 ```
 
 ```scala
-enablePlugins(DockerPlugin)
+enablePlugins(DockerPackagePlugin)
 ```
 
 ```scala
