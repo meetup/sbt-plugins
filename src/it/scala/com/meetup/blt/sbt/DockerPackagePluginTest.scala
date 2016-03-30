@@ -21,4 +21,8 @@ class DockerPackagePluginTest extends FunSpec with Matchers {
     sbt.lastLine("export dockerBaseImage") shouldBe "java:8"
   }
 
+  it("should run tests before publishing") {
+    sbt("docker:publishLocal") should include ("Tests: succeeded 1")
+  }
+
 }
