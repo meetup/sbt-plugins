@@ -30,7 +30,7 @@ clean:
 	rm -rf $(TARGET_DIR)
 
 package-sbt:
-	sbt publishLocal
+	sbt publishLocal it:test
 
 package:
 	docker pull $(BUILDER_TAG)
