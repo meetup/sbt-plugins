@@ -1,0 +1,3 @@
+
+enablePlugins(CommonSettingsPlugin)
+enablePlugins(DockerPackagePlugin)

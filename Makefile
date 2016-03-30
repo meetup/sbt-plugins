@@ -30,7 +30,7 @@ clean:
 	rm -rf $(TARGET_DIR)
 
 package-sbt:
-	sbt publishLocal
+	sbt publishLocal it:test
 
 package:
 	docker pull $(BUILDER_TAG)
@@ -39,6 +39,7 @@ package:
 		-v $(CI_WORKDIR):/data \
 		-v $(CI_IVY_CACHE):/root/.ivy2 \
 		-v $(CI_SBT_CACHE):/root/.sbt \
+		-v /var/run/docker.sock:/var/run/docker.sock \
 		-e VERSION=$(VERSION) \
 		$(BUILDER_TAG)
 
