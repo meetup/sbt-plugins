@@ -1,12 +1,8 @@
 package com.meetup.blt.sbt
 
 import java.io.File
-
 import org.scalatest.{Matchers, FunSpec}
 
-/**
-  * Created by jose on 3/29/16.
-  */
 class DockerPackagePluginTest extends FunSpec with Matchers {
 
   val dockerPackageDir = new File("src/it/sbt/docker-package")
