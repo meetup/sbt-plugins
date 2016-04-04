@@ -7,7 +7,7 @@ This includes settings like:
 * Common settings
  * Organization
  * Getting version from make (our CI interface).
-* Scalariform settings
+ * Scalariform settings
 * Docker native packager settings
 * Nexus publishing settings
 
@@ -27,10 +27,6 @@ Then you can just add the settings you'd like in your `build.sbt`.
 
 ```scala
 enablePlugins(CommonSettingsPlugin)
-```
-
-```scala
-enablePlugins(ScalariformPlugin)
 ```
 
 ```scala

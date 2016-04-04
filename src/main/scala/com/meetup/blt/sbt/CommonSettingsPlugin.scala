@@ -3,9 +3,12 @@ package com.meetup.blt.sbt
 import sbt.Opts.compile
 import sbt.Keys._
 import sbt._
-
+//override def requires: Plugins = ScalariformPlugin
 object CommonSettingsPlugin extends AutoPlugin {
   val Nexus = "https://nexus.blt.meetup.com"
+
+  override def projectConfigurations: Seq[Configuration] =
+    Seq(IntegrationTest)
 
   override def projectSettings: Seq[Setting[_]] = Seq(
     organization in Global := "com.meetup",
@@ -37,6 +40,7 @@ object CommonSettingsPlugin extends AutoPlugin {
       "org.scalatest" %% "scalatest" % "2.2.6" % "test",
       "org.scalacheck" %% "scalacheck" % "1.11.5" % "test"
     )
-  )
+
+  ) ++ ScalariformSettings()
 
 }

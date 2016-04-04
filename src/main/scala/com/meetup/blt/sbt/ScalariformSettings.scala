@@ -6,9 +6,9 @@ import scalariform.formatter.preferences._
 import sbt._
 import sbt.Keys._
 
-object ScalariformPlugin extends AutoPlugin {
+object ScalariformSettings {
 
-  override def projectSettings: Seq[Setting[_]] =
+  def apply(): Seq[Setting[_]] =
     SbtScalariform.scalariformSettings ++ Seq(
       SbtScalariform.ScalariformKeys.preferences := SbtScalariform.ScalariformKeys.preferences.value
         .setPreference(AlignArguments, false)
