@@ -20,4 +20,12 @@ class CommonSettingsPluginTest extends FunSpec with Matchers {
     res shouldBe "0.0.1"
   }
 
+  it("should add a component test config") {
+    sbt("component:test") should include ("Tests: succeeded 2")
+  }
+
+  it("should add an integration test config") {
+    sbt("it:test") should include ("Tests: succeeded 1")
+  }
+
 }
