@@ -9,7 +9,7 @@ object CommonSettingsPlugin extends AutoPlugin {
   val ComponentTest = config("component").extend(Test)
 
   override def projectConfigurations: Seq[Configuration] =
-    Seq(IntegrationTest, ComponentTest)
+    Configurations.default ++ Seq(IntegrationTest, ComponentTest)
 
   override def projectSettings: Seq[Setting[_]] = Seq(
     organization in Global := "com.meetup",
