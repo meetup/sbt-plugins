@@ -1,6 +1,5 @@
 
 enablePlugins(CommonSettingsPlugin)
-enablePlugins(ScalariformPlugin)
 enablePlugins(NexusPlugin)
 
 name := "sbt-plugins"
