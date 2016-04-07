@@ -10,7 +10,7 @@ import scala.sys.process.Process
 class Sbt(baseDir: File) {
 
   def apply(commands: String*): String = {
-    Process(Seq("sbt") ++ commands, baseDir).!!.trim
+    Process(Seq("sbt", "-Dsbt.log.noformat=true") ++ commands, baseDir).!!.trim
   }
 
   def lastLine(commands: String*) = apply(commands: _*).split("\n").last
