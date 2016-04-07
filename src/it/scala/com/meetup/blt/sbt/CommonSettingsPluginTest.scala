@@ -17,7 +17,7 @@ class CommonSettingsPluginTest extends FunSpec with Matchers {
 
   it("should retrieve version from Makefile") {
     val res = sbt.lastLine("export version")
-    res shouldBe "0.0.1"
+    res shouldBe "0.0.1-snapshot"
   }
 
   it("should add a component test config") {
@@ -26,6 +26,10 @@ class CommonSettingsPluginTest extends FunSpec with Matchers {
 
   it("should add an integration test config") {
     sbt("it:test") should include ("Tests: succeeded 1")
+  }
+
+  it("should set project to snapshot") {
+    sbt.lastLine("export isSnapshot") shouldBe "true"
   }
 
 }

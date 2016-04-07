@@ -17,6 +17,10 @@ object CommonSettingsPlugin extends AutoPlugin {
     // Grab version from Make build.properties so we're not managing
     // it in multiple places.
     version := "make -s version".!!.trim,
+    isSnapshot := {
+      val v = version.value
+      v.toLowerCase.contains("snapshot")
+    },
     updateOptions := updateOptions.value.withCachedResolution(true),
     scalacOptions in Global := Seq(
       "-feature",
