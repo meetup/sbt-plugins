@@ -44,7 +44,10 @@ object CommonSettingsPlugin extends AutoPlugin {
     libraryDependencies ++= Seq(
       "org.scalatest" %% "scalatest" % "2.2.6" % "test,component,it",
       "org.scalacheck" %% "scalacheck" % "1.11.5" % "test,component,it"
-    )
+    ),
+
+    // Needed for accessing projects from nexus.blt.meetup.com.
+    credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
 
   ) ++ ScalariformSettings() ++ Defaults.itSettings ++
     inConfig(ComponentTest)(Defaults.testSettings)

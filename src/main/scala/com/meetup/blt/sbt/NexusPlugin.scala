@@ -19,6 +19,9 @@ object NexusPlugin extends AutoPlugin {
       val name = if (snapshot) "snapshots" else "releases"
       Some(name at s"$Nexus/content/repositories/$name")
     },
+    // Needed for accessing projects from nexus.blt.meetup.com.
+    // Leaving here incase someone is publishing but doesn't
+    // use CommonSettingsPlugin.
     credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
   )
 }
