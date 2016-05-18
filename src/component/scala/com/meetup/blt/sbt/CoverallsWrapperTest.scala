@@ -21,4 +21,8 @@ class CoverallsWrapperTest extends FunSpec with Matchers {
     }
   }
 
+  it("should not error attempt coveralls when token env var is empty") {
+    sbt.runWith(Map("COVERALLS_REPO_TOKEN" -> ""), "coverallsMaybe")
+  }
+
 }

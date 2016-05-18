@@ -9,7 +9,7 @@ object CoverallsWrapper extends AutoPlugin {
 
   override def projectSettings: Seq[Setting[_]] = Seq(
     commands += Command.command("coverallsMaybe") { state: State =>
-      if (sys.env.contains("COVERALLS_REPO_TOKEN")) {
+      if (sys.env.get("COVERALLS_REPO_TOKEN").exists(_.nonEmpty)) {
         CoverallsPlugin.doCoveralls(state)
         state
       } else {
