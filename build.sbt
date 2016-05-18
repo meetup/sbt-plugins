@@ -1,6 +1,5 @@
 
 enablePlugins(CommonSettingsPlugin)
-enablePlugins(ScalariformPlugin)
 enablePlugins(NexusPlugin)
 
 name := "sbt-plugins"
@@ -13,12 +12,8 @@ addSbtPlugin("org.scalariform" % "sbt-scalariform" % "1.6.0")
 
 addSbtPlugin("com.typesafe.sbt" % "sbt-native-packager" % "1.0.6")
 
-lazy val root = (project in file("."))
-  .configs(IntegrationTest)
+addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.3.5")
 
-Defaults.itSettings
+addSbtPlugin("org.scoverage" % "sbt-coveralls" % "1.1.0")
 
-libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "2.2.6" % "it",
-  "org.scalacheck" %% "scalacheck" % "1.11.5" % "it"
-)
+parallelExecution in CommonSettingsPlugin.ComponentTest := false
