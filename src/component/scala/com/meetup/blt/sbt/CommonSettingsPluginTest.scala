@@ -6,7 +6,7 @@ import org.scalatest.{Matchers, FunSpec}
 
 class CommonSettingsPluginTest extends FunSpec with Matchers {
 
-  val commonSettingsDir = new File("src/it/sbt/common-settings")
+  val commonSettingsDir = new File("src/component/sbt/common-settings")
 
   val sbt = new Sbt(commonSettingsDir)
 
