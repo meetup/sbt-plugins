@@ -8,9 +8,10 @@ CI_IVY_CACHE ?= $(HOME)/.ivy2
 CI_SBT_CACHE ?= $(HOME)/.sbt
 CI_WORKDIR ?= $(shell pwd)
 
-VERSION ?= $(CI_BUILD_NUMBER)
+VERSION ?= 0.1.$(CI_BUILD_NUMBER)
 
 BUILDER_TAG = $(builderImage):$(builderVersion)
+BASE_TAG = mup.cr/blt/java8:78
 
 # lists all available targets
 list:
@@ -34,6 +35,7 @@ package-sbt:
 
 package:
 	docker pull $(BUILDER_TAG)
+	docker pull $(BASE_TAG)
 	docker run \
 		--rm \
 		-v $(CI_WORKDIR):/data \
@@ -43,7 +45,7 @@ package:
 		-e VERSION=$(VERSION) \
 		$(BUILDER_TAG)
 
-publish:
+publish: package
 	docker pull $(BUILDER_TAG)
 	docker run \
 		--rm \
