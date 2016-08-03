@@ -17,3 +17,7 @@ addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.3.5")
 addSbtPlugin("org.scoverage" % "sbt-coveralls" % "1.1.0")
 
 parallelExecution in CommonSettingsPlugin.ComponentTest := false
+
+resolvers += "softprops-maven" at "http://dl.bintray.com/content/softprops/maven"
+
+bintrayOrganization in ThisBuild := Some("meetup")

@@ -1,4 +1,4 @@
-# Meetup SBT Plugins
+# Meetup SBT Plugins [![Build Status](https://travis-ci.org/meetup/sbt-plugins.svg?branch=master)](https://travis-ci.org/meetup/sbt-plugins)
 
 A base collection of SBT settings that many projects should be able to take advantage of.
 
