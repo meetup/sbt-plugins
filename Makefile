@@ -42,6 +42,7 @@ package:
 		-v $(CI_IVY_CACHE):/root/.ivy2 \
 		-v $(CI_SBT_CACHE):/root/.sbt \
 		-v $(HOME)/.bintray:/root/.bintray \
+		-v /var/run/docker.sock:/var/run/docker.sock \
 		-e COVERALLS_REPO_TOKEN=$(COVERALLS_REPO_TOKEN) \
 		-e TRAVIS_JOB_ID=$(TRAVIS_JOB_ID) \
 		-e VERSION=$(VERSION) \
