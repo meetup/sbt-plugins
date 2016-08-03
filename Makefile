@@ -41,7 +41,9 @@ package:
 		-v $(CI_WORKDIR):/data \
 		-v $(CI_IVY_CACHE):/root/.ivy2 \
 		-v $(CI_SBT_CACHE):/root/.sbt \
-		-v /var/run/docker.sock:/var/run/docker.sock \
+		-v $(HOME)/.bintray:/root/.bintray \
+		-e COVERALLS_REPO_TOKEN=$(COVERALLS_REPO_TOKEN) \
+		-e TRAVIS_JOB_ID=$(TRAVIS_JOB_ID) \
 		-e VERSION=$(VERSION) \
 		$(BUILDER_TAG)
 
@@ -52,7 +54,10 @@ publish: package
 		-v $(CI_WORKDIR):/data \
 		-v $(CI_IVY_CACHE):/root/.ivy2 \
 		-v $(CI_SBT_CACHE):/root/.sbt \
+		-v $(HOME)/.bintray:/root/.bintray \
 		-e VERSION=$(VERSION) \
+		-e COVERALLS_REPO_TOKEN=$(COVERALLS_REPO_TOKEN) \
+		-e TRAVIS_JOB_ID=$(TRAVIS_JOB_ID) \
 		$(BUILDER_TAG) \
 		publish-sbt
 
