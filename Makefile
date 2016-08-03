@@ -11,6 +11,7 @@ CI_WORKDIR ?= $(shell pwd)
 VERSION ?= $(CI_BUILD_NUMBER)
 
 BUILDER_TAG = $(builderImage):$(builderVersion)
+BASE_TAG = mup.cr/blt/java8:78
 
 # lists all available targets
 list:
@@ -34,6 +35,7 @@ package-sbt:
 
 package:
 	docker pull $(BUILDER_TAG)
+	docker pull $(BASE_TAG)
 	docker run \
 		--rm \
 		-v $(CI_WORKDIR):/data \
