@@ -1,7 +1,9 @@
-credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
-resolvers += "Nexus" at "https://nexus.blt.meetup.com/content/repositories/releases"
+resolvers +=  Resolver.url(
+  "meetup-sbt-plugins",
+  new java.net.URL("https://dl.bintray.com/meetup/sbt-plugins/")
+)(Resolver.ivyStylePatterns)
 
-addSbtPlugin("com.meetup" % "sbt-plugins" % "18.0.0")
+addSbtPlugin("com.meetup" % "sbt-plugins" % "0.1.11")
 
 addSbtPlugin("com.eed3si9n" % "sbt-dirty-money" % "0.1.0")
 

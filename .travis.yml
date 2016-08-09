@@ -28,7 +28,6 @@ before_install:
   - sudo pip install envtpl
 
   - mkdir "$HOME/.bintray"
-  - envtpl < .nexuscredential > "$HOME/.ivy2/.credentials"
   - envtpl < .credentials > "$HOME/.bintray/.credentials"
 
   - export CI_BUILD_NUMBER=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $CI_BUILD_NUMBER; else echo "${TRAVIS_BUILD_NUMBER}-SNAPSHOT"; fi)
