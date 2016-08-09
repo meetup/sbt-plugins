@@ -49,6 +49,7 @@ object CommonSettingsPlugin extends AutoPlugin {
     // Needed for accessing projects from nexus.blt.meetup.com.
     credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
 
-  ) ++ ScalariformSettings() ++ Defaults.itSettings ++
-    inConfig(ComponentTest)(Defaults.testSettings)
+  ) ++ Defaults.itSettings ++
+    inConfig(ComponentTest)(Defaults.testSettings) ++
+    ScalariformSettings()
 }

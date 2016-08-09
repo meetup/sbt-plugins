@@ -1,10 +1,13 @@
 package com.meetup.blt.sbt
 
+import com.meetup.blt.sbt.CommonSettingsPlugin.{ComponentTest => Ct}
 import com.typesafe.sbt.SbtScalariform
 import com.typesafe.sbt.SbtScalariform.autoImport._
-import scalariform.formatter.preferences._
-import sbt._
 import sbt.Keys._
+import sbt._
+import sbt.{IntegrationTest => It}
+
+import scalariform.formatter.preferences._
 
 object ScalariformSettings {
 
@@ -36,6 +39,11 @@ object ScalariformSettings {
       // bad scalariform, bad.
       excludeFilter in scalariformFormat <<= excludeFilter(_ || {
         new SimpleFileFilter(_.getCanonicalPath.contains("/target/"))
-      }))
-
+      })) ++
+      inConfig(It)(SbtScalariform.configScalariformSettings) ++
+      inConfig(Ct)(SbtScalariform.configScalariformSettings) ++
+      Seq(
+        compileInputs in (It, compile) <<= (compileInputs in (It, compile)) dependsOn (scalariformFormat in It),
+        compileInputs in (Ct, compile) <<= (compileInputs in (Ct, compile)) dependsOn (scalariformFormat in Ct)
+      )
 }
