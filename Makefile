@@ -40,7 +40,8 @@ package:
 		-v $(HOME)/.bintray:/root/.bintray \
 		-v /var/run/docker.sock:/var/run/docker.sock \
 		-e VERSION=$(VERSION) \
-		$(BUILDER_TAG)
+		$(BUILDER_TAG) \
+		make package-sbt
 
 publish: package
 	docker pull $(BUILDER_TAG)
@@ -52,7 +53,7 @@ publish: package
 		-v $(HOME)/.bintray:/root/.bintray \
 		-e VERSION=$(VERSION) \
 		$(BUILDER_TAG) \
-		publish-sbt
+		make publish-sbt
 
 publish-sbt:
 	sbt publish
