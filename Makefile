@@ -1,17 +1,14 @@
-include build.properties
-
 PROJECT_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 TARGET_DIR=$(PROJECT_DIR)target
 
-CI_BUILD_NUMBER ?= $(USER)-snapshot
+CI_BUILD_NUMBER ?= $(USER)-SNAPSHOT
 CI_IVY_CACHE ?= $(HOME)/.ivy2
 CI_SBT_CACHE ?= $(HOME)/.sbt
 CI_WORKDIR ?= $(shell pwd)
 
-VERSION ?= 0.1.$(CI_BUILD_NUMBER)
+VERSION ?= 0.2.$(CI_BUILD_NUMBER)
 
-BUILDER_TAG = $(builderImage):$(builderVersion)
-BASE_TAG = mup.cr/blt/java8:78
+BUILDER_TAG = "meetup/sbt-builder:0.1.3"
 
 # lists all available targets
 list:
@@ -43,8 +40,6 @@ package:
 		-v $(CI_SBT_CACHE):/root/.sbt \
 		-v $(HOME)/.bintray:/root/.bintray \
 		-v /var/run/docker.sock:/var/run/docker.sock \
-		-e COVERALLS_REPO_TOKEN=$(COVERALLS_REPO_TOKEN) \
-		-e TRAVIS_JOB_ID=$(TRAVIS_JOB_ID) \
 		-e VERSION=$(VERSION) \
 		$(BUILDER_TAG)
 
@@ -57,8 +52,6 @@ publish: package
 		-v $(CI_SBT_CACHE):/root/.sbt \
 		-v $(HOME)/.bintray:/root/.bintray \
 		-e VERSION=$(VERSION) \
-		-e COVERALLS_REPO_TOKEN=$(COVERALLS_REPO_TOKEN) \
-		-e TRAVIS_JOB_ID=$(TRAVIS_JOB_ID) \
 		$(BUILDER_TAG) \
 		publish-sbt
 
