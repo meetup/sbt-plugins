@@ -14,14 +14,37 @@ class CoverallsWrapperTest extends FunSpec with Matchers {
     sbt("coverallsMaybe")
   }
 
-  it("should error attempt coveralls (and fail) when token env var is present") {
+  it("should attempt to run coveralls (and fail) when token env var is present") {
     // Runtime exception of non zero exit.
     a [java.lang.RuntimeException] should be thrownBy {
       sbt.runWith(Map("COVERALLS_REPO_TOKEN" -> "fake"), "coverallsMaybe")
     }
   }
 
-  it("should not error attempt coveralls when token env var is empty") {
+  it("should attempt to run coveralls (and fail) when job id env var is present") {
+    // Runtime exception of non zero exit.
+    a [java.lang.RuntimeException] should be thrownBy {
+      sbt.runWith(Map("TRAVIS_JOB_ID" -> "123"), "coverallsMaybe")
+    }
+  }
+
+  it("should attempt to run coveralls (and fail) if not pull request build") {
+    a [java.lang.RuntimeException] should be thrownBy {
+      sbt.runWith(Map(
+        "TRAVIS_JOB_ID" -> "123",
+        "TRAVIS_PULL_REQUEST" -> "false"
+      ), "coverallsMaybe")
+    }
+  }
+
+  it("should not attempt to run if pull request build") {
+    sbt.runWith(Map(
+      "TRAVIS_JOB_ID" -> "123",
+      "TRAVIS_PULL_REQUEST" -> "123"
+    ), "coverallsMaybe")
+  }
+
+  it("should not attempt to run coveralls when token env var is empty") {
     sbt.runWith(Map("COVERALLS_REPO_TOKEN" -> ""), "coverallsMaybe")
   }
 

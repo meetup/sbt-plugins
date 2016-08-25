@@ -39,3 +39,20 @@ enablePlugins(DockerPackagePlugin)
 ```scala
 enablePlugins(NexusPlugin)
 ```
+
+
+## CoverallsWrapper
+
+The Coveralls wrapper is a simple conditional runner.  If the needed
+info for coveralls is present it'll run it, if not it fails gracefully
+which makes building locally much more pleasant.
+
+```scala
+enablePlugins(CoverallsWrapper)
+```
+
+If using Travis Pro (private repo)
+
+```scala
+enablePlugins(CoverallsWrapperPro)
+```
