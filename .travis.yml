@@ -1,6 +1,11 @@
 sudo: required
 language: bash
 
+# exclude tags.
+branches:
+  except:
+  - /^\d+-.\d+.\d+$/
+
 services:
   - docker
 
