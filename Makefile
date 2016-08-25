@@ -32,7 +32,6 @@ package-sbt:
 
 package:
 	docker pull $(BUILDER_TAG)
-	docker pull $(BASE_TAG)
 	docker run \
 		--rm \
 		-v $(CI_WORKDIR):/data \
