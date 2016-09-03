@@ -6,7 +6,7 @@ import sbt._
 
 object CommonSettingsPlugin extends AutoPlugin {
   val Nexus = "https://nexus.blt.meetup.com"
-  val ComponentTest = config("component").extend(Test)
+  val ComponentTest = config("component").extend(Test, Optional, Provided)
 
   override def projectConfigurations: Seq[Configuration] =
     Configurations.default ++ Seq(IntegrationTest, ComponentTest)
