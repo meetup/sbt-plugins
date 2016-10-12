@@ -27,7 +27,11 @@ object CommonSettingsPlugin extends AutoPlugin {
       compile.unchecked,
       compile.deprecation,
       // Needed for AUFS file systems.
-      "-Xmax-classfile-name", "242") ++
+      "-Xmax-classfile-name", "242",
+      "-Yno-adapted-args",
+      "-Ywarn-dead-code",
+      "-Ywarn-numeric-widen",
+      "-Xfatal-warnings") ++
       compile.encoding("UTF8"),
     javacOptions in Global := Seq(
       "-g",
