@@ -56,3 +56,10 @@ If using Travis Pro (private repo)
 ```scala
 enablePlugins(CoverallsWrapperPro)
 ```
+
+To have pr published reports published to coveralls. Add the following to your
+build definition.
+
+```scala
+coverallsPublishPrReport := true
+```

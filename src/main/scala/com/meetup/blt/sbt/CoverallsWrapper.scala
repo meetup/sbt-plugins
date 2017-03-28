@@ -6,7 +6,9 @@ import sbt.Keys._
 
 object CoverallsWrapper extends AutoPlugin {
   object autoImport {
-    val coverallsPublishPrReport = settingKey[Boolean]("coveralls-publish-pr-report")
+    val coverallsPublishPrReport = settingKey[Boolean](
+      "Publishes coverage reports to coveralls on pull requests."
+    )
   }
   import autoImport._
   override def requires: Plugins = CoverallsPlugin
@@ -23,6 +25,7 @@ object CoverallsWrapper extends AutoPlugin {
   }
 
   override def projectSettings: Seq[Setting[_]] = Seq(
+    coverallsPublishPrReport := false,
     commands += Command.command("coverallsMaybe") { state: State =>
       if (runCoveralls(coverallsPublishPrReport.value)) {
         CoverallsPlugin.doCoveralls(state)
