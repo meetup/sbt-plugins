@@ -37,6 +37,11 @@ class CoverallsWrapperTest extends FunSpec with Matchers {
     }
   }
 
+  it("should not be configured to publish reports on prs by default") {
+    val res = sbt.lastLine("export coverallsPublishPrReport")
+    res shouldBe "false"
+  }
+
   it("should not attempt to run if pull request build") {
     sbt.runWith(Map(
       "TRAVIS_JOB_ID" -> "123",

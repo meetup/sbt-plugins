@@ -5,9 +5,15 @@ import sbt._
 import sbt.Keys._
 
 object CoverallsWrapper extends AutoPlugin {
+  object autoImport {
+    val coverallsPublishPrReport = settingKey[Boolean](
+      "Publishes coverage reports to coveralls on pull requests."
+    )
+  }
+  import autoImport._
   override def requires: Plugins = CoverallsPlugin
 
-  private def runCoveralls() = {
+  private def runCoveralls(publishPrReport: Boolean) = {
     val varsExist =
       sys.env.get("COVERALLS_REPO_TOKEN").exists(_.nonEmpty) ||
         sys.env.get("TRAVIS_JOB_ID").exists(_.nonEmpty)
@@ -15,12 +21,13 @@ object CoverallsWrapper extends AutoPlugin {
     val prBuild =
       sys.env.get("TRAVIS_PULL_REQUEST").exists(_ != "false")
 
-    varsExist && !prBuild
+    varsExist && (publishPrReport || !prBuild)
   }
 
   override def projectSettings: Seq[Setting[_]] = Seq(
+    coverallsPublishPrReport := false,
     commands += Command.command("coverallsMaybe") { state: State =>
-      if (runCoveralls()) {
+      if (runCoveralls(coverallsPublishPrReport.value)) {
         CoverallsPlugin.doCoveralls(state)
         state
       } else {
