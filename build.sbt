@@ -1,4 +1,4 @@
-
+// comment.
 enablePlugins(CommonSettingsPlugin)
 
 name := "sbt-plugins"
