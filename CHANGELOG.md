@@ -4,7 +4,8 @@ be documented in this file.
 
 ## [0.3.x]
 ### Added
-- Hardned compiler settings for scalac. Specifically:
+- Exclude generated files from coverage report
+- Hardened compiler settings for scalac. Specifically:
   * `-Yno-adapted-args` to prevent auto-tupling and friends
   * `-Ywarn-dead-code` to prevent dead code
   * `-Ywarn-numeric-widen` to require explicit conversion between numeric types
