@@ -1,6 +1,7 @@
 package com.meetup.blt.sbt
 
 import org.scoverage.coveralls.CoverallsPlugin
+import scoverage.ScoverageKeys._
 import sbt._
 import sbt.Keys._
 
@@ -26,6 +27,7 @@ object CoverallsWrapper extends AutoPlugin {
 
   override def projectSettings: Seq[Setting[_]] = Seq(
     coverallsPublishPrReport := false,
+    coverageExcludedFiles in ThisBuild := ".*target/.*",
     commands += Command.command("coverallsMaybe") { state: State =>
       if (runCoveralls(coverallsPublishPrReport.value)) {
         CoverallsPlugin.doCoveralls(state)
