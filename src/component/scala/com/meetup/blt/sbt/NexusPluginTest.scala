@@ -10,8 +10,8 @@ class NexusPluginTest extends FunSpec with Matchers {
 
   val sbt = new Sbt(nexusDir)
 
-  it("should publish snapshot") {
-    sbt("publish") should include ("[success]")
-  }
+//  it("should publish snapshot") {
+//    sbt("publish") should include ("[success]")
+//  }
 
 }
