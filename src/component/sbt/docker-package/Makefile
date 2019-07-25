@@ -1,6 +1,6 @@
 
 publish-tag:
-	@echo "mup.cr/blt/publish-test"
+	@echo "gcr.io/blt/publish-test"
 
 base-tag:
 	@echo "java:8"
