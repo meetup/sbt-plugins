@@ -10,7 +10,7 @@ class DockerPackagePluginTest extends FunSpec with Matchers {
   val sbt = new Sbt(dockerPackageDir)
 
   it("should load image name from Makefile") {
-    sbt.secondToLast("show docker:dockerTarget") should include ("mup.cr/blt/publish-test")
+    sbt.secondToLast("show docker:dockerTarget") should include ("gcr.io/blt/publish-test")
   }
 
   it("should load base tag from Makefile") {
