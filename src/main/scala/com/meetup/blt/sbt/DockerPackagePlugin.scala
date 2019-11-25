@@ -13,7 +13,6 @@ object DockerPackagePlugin extends AutoPlugin {
   override def requires: Plugins = SbtDockerPlugin && JavaAppPackaging
 
   override def projectSettings: Seq[Setting[_]] = Seq(
-    publishLocal in Docker <<= (publishLocal in Docker).dependsOn(test in Test),
     dockerTarget in Docker := "make -s publish-tag".!!.trim,
     dockerBaseImage := "make -s base-tag".!!.trim)
 }
