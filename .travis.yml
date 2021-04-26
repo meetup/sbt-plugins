@@ -18,12 +18,8 @@ env:
     - CI_BUILD_NUMBER=$TRAVIS_BUILD_NUMBER
     - CLOUDSDK_CORE_DISABLE_PROMPTS=1
 
-addons:
-  apt:
-    packages:
-      - maven
-
 before_install:
+  - sudo apt-get install maven
 
   # Install envtpl for easy templating.
   - sudo pip install envtpl
