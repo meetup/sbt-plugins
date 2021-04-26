@@ -1,9 +1,8 @@
 language: java
 
-# exclude tags.
 branches:
-  except:
-  - /^\d+.\d+.\d+$/
+  only:
+    - master  # (PRs to master, master merges, master pushes)
 
 services:
   - docker
