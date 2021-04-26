@@ -67,7 +67,7 @@ publish-sbt:
 		-Djavadoc=./target/scala-2.11/${ARTIFACT_ID}-${VERSION}-javadoc.jar \
 		-Dsources=./target/scala-2.11/${ARTIFACT_ID}-${VERSION}-sources.jar \
 		-DrepositoryId=github \
-		-Durl=https://maven.pkg.github.com/meetup/meetup
+		-Durl=https://maven.pkg.github.com/meetup/meetup-oss
 
 version:
 	@echo $(VERSION)

@@ -24,7 +24,8 @@ before_install:
   - sudo pip install envtpl
 
   - mkdir "$HOME/.bintray"
-  - envtpl < .credentials > "$HOME/.bintray/.credentials"
+  - envtpl < .m2.xml > "$HOME/.m2/settings.xml"
+  - envtpl < .nexuscredential > "$HOME/.ivy2/.credentials"
 
   # Use SNAPSHOT for all other than master builds.
   - export CI_BUILD_NUMBER=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then echo $CI_BUILD_NUMBER; else echo "${TRAVIS_BUILD_NUMBER}-SNAPSHOT"; fi)
