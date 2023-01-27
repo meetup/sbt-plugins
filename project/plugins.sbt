@@ -5,4 +5,4 @@ resolvers +=  Resolver.url(
 
 addSbtPlugin("com.eed3si9n" % "sbt-dirty-money" % "0.1.0")
 
-addSbtPlugin("me.lessis" % "bintray-sbt" % "0.3.0")
+addSbtPlugin("com.codecommit" % "sbt-github-packages" % "0.5.2")
