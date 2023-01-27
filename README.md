@@ -1,4 +1,6 @@
-# Meetup SBT Plugins [![Build Status](https://travis-ci.org/meetup/sbt-plugins.svg?branch=master)](https://travis-ci.org/meetup/sbt-plugins) [ ![Download](https://api.bintray.com/packages/meetup/sbt-plugins/sbt-plugins/images/download.svg) ](https://bintray.com/meetup/sbt-plugins/sbt-plugins/_latestVersion)
+# Meetup SBT Plugins
+
+[![Publish artifact](https://github.com/meetup/sbt-plugins/actions/workflows/sbt-plugins.yml/badge.svg)](https://github.com/meetup/sbt-plugins/actions/workflows/sbt-plugins.yml)
 
 A base collection of useful SBT settings that many projects should be able to take advantage of.
 
